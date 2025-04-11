@@ -2,45 +2,42 @@ const { DataTypes } = require('sequelize');
 const database = require('../config/database');
 const sequelize = database.getSequelize();
 
-const User = sequelize.define('User', {
+const Users = sequelize.define('Users', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
     username: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
     email: {
-        type: DataTypes.STRING(40),
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
     passwordExpirationDays: {
         type: DataTypes.INTEGER,
-        allowNull: true,  // Può essere NULL, se non definito
-    },
-    passwordExpirationDate: {
-        type: DataTypes.DATE,
-        allowNull: true,  // Può essere NULL, se non definito
+        allowNull: true,
+        field:"passwordexpirationdays"
     },
     createdDate: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+        field:"createddate"
     },
     lastModifiedDate: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+        field:"lastmodifieddate"
     },
     active: {
         type: DataTypes.BOOLEAN,
-        defaultValue: true,  // Impostato su true di default
+        defaultValue: true,
     }
 }, {
-    tableName: 'user',  // Assicurati che il nome della tabella corrisponda al nome nel DB
-    timestamps: false,   // Disabilita l'uso automatico di createdAt e updatedAt
+    tableName: 'users',
+    timestamps: false,
 });
 
-module.exports = User;
+module.exports = Users;

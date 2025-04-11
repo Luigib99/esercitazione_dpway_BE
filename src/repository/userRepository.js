@@ -14,7 +14,7 @@ const findByUsernameOrEmail = async (username, email) => {
     });
 };
 
-// Crea un nuovo utente con la password e il ruolo
+// CEATE
 const createUserWithPasswordAndRole = async (username, email, hashedPassword) => {
     const transaction = await User.sequelize.transaction();
     try {
