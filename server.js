@@ -16,9 +16,6 @@ app.use(express.json());
 
 // ROUTE
 app.use('/users', userRoute);
-app.use((req, res) => {
-    res.status(404).json({ error: 'Route non trovata' });
-});
 
 // SINCRONIZZAZIONE
 database.syncModels();
