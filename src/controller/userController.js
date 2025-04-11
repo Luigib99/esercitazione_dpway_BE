@@ -24,9 +24,10 @@ const createUser = async (req, res) => {
     }
 };
 
-const readAllUsers = async (req,res) => {
+//READALL
+const readAll = async (req,res) => {
     try {
-        const users = await userService.readAllUsers();
+        const users = await userService.readAll();
         res.status(200).json({
             message: 'Utenti letti con successo',
             users: users
@@ -40,6 +41,24 @@ const readAllUsers = async (req,res) => {
     }
 }
 
+//READBYID
+const readById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await User.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
+
+export { readAll, readById };
+
+
 module.exports = {
     createUser,
-    readAllUsers,};
+    readAll,};

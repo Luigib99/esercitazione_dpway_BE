@@ -2,10 +2,10 @@ const userRepository = require('../repository/userRepository');
 
 //READ ALL
 
-const readAllUsers = async ()=> {
-    return await userRepository.findAllUsers();
+const readAll = async ()=> {
+    return await userRepository.readAll();
 }
 
 module.exports = {
-    readAllUsers,
+    readAll,
 };

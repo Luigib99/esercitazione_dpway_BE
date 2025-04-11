@@ -1,10 +1,10 @@
 const  User  = require('../model/User');
 
-//FINDALL
-const findAllUsers = async () => {
+//READALL
+const readAll = async () => {
     return await User.findAll();
 };
 
 module.exports = {
-    findAllUsers
+    readAll
 };
